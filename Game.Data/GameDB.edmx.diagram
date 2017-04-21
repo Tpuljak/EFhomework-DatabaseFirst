@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="364d29caafea46fd89d0e0087b0cd6cc" Name="Diagram1">
+        <EntityTypeShape EntityType="GameModel.Match" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameModel.Mission" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="GameModel.FK__Mission__MatchId__3E52440B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GameModel.Player" Width="1.5" PointX="3" PointY="4" />
+        <AssociationConnector Association="GameModel.Player_Match" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

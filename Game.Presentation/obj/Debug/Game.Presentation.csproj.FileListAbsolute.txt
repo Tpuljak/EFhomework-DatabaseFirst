@@ -1,0 +1,16 @@
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\Game.Presentation.exe.config
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\Game.Presentation.exe
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\Game.Presentation.pdb
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\EntityFramework.dll
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\EntityFramework.SqlServer.dll
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\Game.Data.dll
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\Game.Domain.dll
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\Game.Data.pdb
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\Game.Data.dll.config
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\Game.Domain.pdb
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\Game.Domain.dll.config
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\EntityFramework.xml
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\bin\Debug\EntityFramework.SqlServer.xml
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\obj\Debug\Game.Presentation.csprojResolveAssemblyReference.cache
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\obj\Debug\Game.Presentation.exe
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Presentation\obj\Debug\Game.Presentation.pdb

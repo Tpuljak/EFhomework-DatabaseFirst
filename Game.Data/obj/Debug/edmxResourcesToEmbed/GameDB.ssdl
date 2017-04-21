@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Match">
+    <Key>
+      <PropertyRef Name="MatchId" />
+    </Key>
+    <Property Name="MatchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Mission">
+    <Key>
+      <PropertyRef Name="MissionId" />
+    </Key>
+    <Property Name="MissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Text" Type="nvarchar(max)" />
+    <Property Name="MatchId" Type="int" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="MMR" Type="int" />
+    <Property Name="Password" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Game.dbo.Player_Match' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Player_Match">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+      <PropertyRef Name="MatchId" />
+    </Key>
+    <Property Name="PlayerId" Type="int" Nullable="false" />
+    <Property Name="MatchId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Mission__MatchId__4D94879B">
+    <End Role="Match" Type="Self.Match" Multiplicity="0..1" />
+    <End Role="Mission" Type="Self.Mission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Match">
+        <PropertyRef Name="MatchId" />
+      </Principal>
+      <Dependent Role="Mission">
+        <PropertyRef Name="MatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Player_Ma__Match__5070F446">
+    <End Role="Match" Type="Self.Match" Multiplicity="1" />
+    <End Role="Player_Match" Type="Self.Player_Match" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Match">
+        <PropertyRef Name="MatchId" />
+      </Principal>
+      <Dependent Role="Player_Match">
+        <PropertyRef Name="MatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Player_Ma__Playe__4F7CD00D">
+    <End Role="Player" Type="Self.Player" Multiplicity="1" />
+    <End Role="Player_Match" Type="Self.Player_Match" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="PlayerId" />
+      </Principal>
+      <Dependent Role="Player_Match">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GameModelStoreContainer">
+    <EntitySet Name="Match" EntityType="Self.Match" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mission" EntityType="Self.Mission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Player_Match" EntityType="Self.Player_Match" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Player_Match].[PlayerId] AS [PlayerId], 
+    [Player_Match].[MatchId] AS [MatchId]
+    FROM [dbo].[Player_Match] AS [Player_Match]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Mission__MatchId__4D94879B" Association="Self.FK__Mission__MatchId__4D94879B">
+      <End Role="Match" EntitySet="Match" />
+      <End Role="Mission" EntitySet="Mission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Player_Ma__Match__5070F446" Association="Self.FK__Player_Ma__Match__5070F446">
+      <End Role="Match" EntitySet="Match" />
+      <End Role="Player_Match" EntitySet="Player_Match" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Player_Ma__Playe__4F7CD00D" Association="Self.FK__Player_Ma__Playe__4F7CD00D">
+      <End Role="Player" EntitySet="Player" />
+      <End Role="Player_Match" EntitySet="Player_Match" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

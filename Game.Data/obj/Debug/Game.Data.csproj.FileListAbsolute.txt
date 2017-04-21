@@ -1,0 +1,10 @@
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Data\bin\Debug\Game.Data.dll.config
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Data\bin\Debug\Game.Data.dll
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Data\bin\Debug\Game.Data.pdb
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Data\bin\Debug\EntityFramework.dll
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Data\bin\Debug\EntityFramework.SqlServer.dll
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Data\bin\Debug\EntityFramework.xml
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Data\bin\Debug\EntityFramework.SqlServer.xml
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Data\obj\Debug\Game.Data.csprojResolveAssemblyReference.cache
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Data\obj\Debug\Game.Data.dll
+\\mac\home\documents\visual studio 2017\Projects\Game(2)\Game.Data\obj\Debug\Game.Data.pdb

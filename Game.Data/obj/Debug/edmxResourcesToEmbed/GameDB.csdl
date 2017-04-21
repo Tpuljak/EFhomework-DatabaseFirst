@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Match">
+    <Key>
+      <PropertyRef Name="MatchId" />
+    </Key>
+    <Property Name="MatchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Missions" Relationship="Self.FK__Mission__MatchId__3E52440B" FromRole="Match" ToRole="Mission" />
+    <NavigationProperty Name="Players" Relationship="GameModel.Player_Match" FromRole="Match" ToRole="Player" />
+  </EntityType>
+  <EntityType Name="Mission">
+    <Key>
+      <PropertyRef Name="MissionId" />
+    </Key>
+    <Property Name="MissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MatchId" Type="Int32" />
+    <NavigationProperty Name="Match" Relationship="Self.FK__Mission__MatchId__3E52440B" FromRole="Mission" ToRole="Match" />
+  </EntityType>
+  <Association Name="FK__Mission__MatchId__3E52440B">
+    <End Role="Match" Type="Self.Match" Multiplicity="0..1" />
+    <End Role="Mission" Type="Self.Mission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Match">
+        <PropertyRef Name="MatchId" />
+      </Principal>
+      <Dependent Role="Mission">
+        <PropertyRef Name="MatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GameEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Matches" EntityType="Self.Match" />
+    <EntitySet Name="Missions" EntityType="Self.Mission" />
+    <AssociationSet Name="FK__Mission__MatchId__3E52440B" Association="Self.FK__Mission__MatchId__3E52440B">
+      <End Role="Match" EntitySet="Matches" />
+      <End Role="Mission" EntitySet="Missions" />
+    </AssociationSet>
+    <EntitySet Name="Players" EntityType="GameModel.Player" />
+    <AssociationSet Name="Player_Match" Association="GameModel.Player_Match">
+      <End Role="Match" EntitySet="Matches" />
+      <End Role="Player" EntitySet="Players" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MMR" Type="Int32" />
+    <NavigationProperty Name="Matches" Relationship="GameModel.Player_Match" FromRole="Player" ToRole="Match" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="Player_Match">
+    <End Type="GameModel.Match" Role="Match" Multiplicity="*" />
+    <End Type="GameModel.Player" Role="Player" Multiplicity="*" />
+  </Association>
+</Schema>
