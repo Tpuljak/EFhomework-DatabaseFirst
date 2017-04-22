@@ -41,7 +41,7 @@ namespace Game.Domain.Repositories
             _context.SaveChanges();
         }
 
-        private Match getMatch (int matchId)
+        public Match getMatch (int matchId)
         {
             return _context.Matches.First(x => x.MatchId == matchId);
         }

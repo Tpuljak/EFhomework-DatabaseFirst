@@ -22,20 +22,20 @@
     <EntitySetMapping Name="Players">
       <EntityTypeMapping TypeName="GameModel.Player">
         <MappingFragment StoreEntitySet="Player">
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="MMR" ColumnName="MMR" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MMR" ColumnName="MMR" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="Player_Match" TypeName="GameModel.Player_Match" StoreEntitySet="Player_Match">
-      <EndProperty Name="Player">
-        <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
-      </EndProperty>
       <EndProperty Name="Match">
         <ScalarProperty Name="MatchId" ColumnName="MatchId" />
+      </EndProperty>
+      <EndProperty Name="Player">
+        <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

@@ -16,20 +16,6 @@ namespace Game.Presentation
             MatchRepository matches = new MatchRepository();           
             PlayerRepository players = new PlayerRepository();          
             MissionRepository missions = new MissionRepository();
-            
-
-            /*
-            Player newPlayer = new Player();
-            newPlayer.Password = "blabla";
-            newPlayer.Username = "PlayerUno";
-            newPlayer.Email = "Player.Uno@gmail.com";
-            newPlayer.MMR = rnd.Next(1500, 2300);
-
-            List<Match> newPlayerMatches = new List<Match>();
-            newPlayerMatches.Add(matches.GetAllMatches()[0]);
-
-            players.AddNewPlayer(newPlayer, newPlayerMatches);
-            */
 
             Console.WriteLine("Welcome to the Game Database.");
             Console.WriteLine("Enter a Task number (0 to exit):");
@@ -55,7 +41,24 @@ namespace Game.Presentation
                         matches.ListAllMatches();
                         break;
                     case 3:
+                        Player newPlayer = new Player();
+                        Console.WriteLine("Enter the Players username.");
+                        newPlayer.Username = Console.ReadLine();
+                        Console.WriteLine("Enter the Players email.");
+                        newPlayer.Email = Console.ReadLine();
+                        Console.WriteLine("Enter the Players password.");
+                        newPlayer.Password = Console.ReadLine();
+                        newPlayer.MMR = rnd.Next(1500, 2300);
+                        Console.WriteLine("Enter the number of Matches the Player participates in.");
+                        int numOfMathces = int.Parse(Console.ReadLine());
+                        for (int i = 0; i < numOfMathces; i++)
+                        {
+                            Console.WriteLine("Enter the Id of the wanted Match.");
+                            int matchId = int.Parse(Console.ReadLine());
+                            newPlayer.Matches.Add(matches.getMatch(matchId));
+                        }
 
+                        players.AddNewPlayer(newPlayer);
                         break;
                     case 4:
                         Match newMatch = new Match();

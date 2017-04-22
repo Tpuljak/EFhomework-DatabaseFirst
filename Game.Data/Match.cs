@@ -25,8 +25,8 @@ namespace Game.Data
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mission> Missions { get; set; }
+        public ICollection<Mission> Missions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Player> Players { get; set; }
+        public ICollection<Player> Players { get; set; }
     }
 }

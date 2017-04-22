@@ -6,8 +6,8 @@
     </Key>
     <Property Name="MatchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Missions" Relationship="Self.FK__Mission__MatchId__3E52440B" FromRole="Match" ToRole="Mission" />
-    <NavigationProperty Name="Players" Relationship="GameModel.Player_Match" FromRole="Match" ToRole="Player" />
+    <NavigationProperty Name="Missions" Relationship="Self.FK__Mission__MatchId__4D94879B" FromRole="Match" ToRole="Mission" />
+    <NavigationProperty Name="Players" Relationship="Self.Player_Match" FromRole="Match" ToRole="Player" />
   </EntityType>
   <EntityType Name="Mission">
     <Key>
@@ -17,9 +17,20 @@
     <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MatchId" Type="Int32" />
-    <NavigationProperty Name="Match" Relationship="Self.FK__Mission__MatchId__3E52440B" FromRole="Mission" ToRole="Match" />
+    <NavigationProperty Name="Match" Relationship="Self.FK__Mission__MatchId__4D94879B" FromRole="Mission" ToRole="Match" />
   </EntityType>
-  <Association Name="FK__Mission__MatchId__3E52440B">
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MMR" Type="Int32" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Matches" Relationship="Self.Player_Match" FromRole="Player" ToRole="Match" />
+  </EntityType>
+  <Association Name="FK__Mission__MatchId__4D94879B">
     <End Role="Match" Type="Self.Match" Multiplicity="0..1" />
     <End Role="Mission" Type="Self.Mission" Multiplicity="*" />
     <ReferentialConstraint>
@@ -31,32 +42,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Player_Match">
+    <End Role="Match" Type="Self.Match" Multiplicity="*" />
+    <End Role="Player" Type="Self.Player" Multiplicity="*" />
+  </Association>
   <EntityContainer Name="GameEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Matches" EntityType="Self.Match" />
     <EntitySet Name="Missions" EntityType="Self.Mission" />
-    <AssociationSet Name="FK__Mission__MatchId__3E52440B" Association="Self.FK__Mission__MatchId__3E52440B">
+    <EntitySet Name="Players" EntityType="Self.Player" />
+    <AssociationSet Name="FK__Mission__MatchId__4D94879B" Association="Self.FK__Mission__MatchId__4D94879B">
       <End Role="Match" EntitySet="Matches" />
       <End Role="Mission" EntitySet="Missions" />
     </AssociationSet>
-    <EntitySet Name="Players" EntityType="GameModel.Player" />
-    <AssociationSet Name="Player_Match" Association="GameModel.Player_Match">
+    <AssociationSet Name="Player_Match" Association="Self.Player_Match">
       <End Role="Match" EntitySet="Matches" />
       <End Role="Player" EntitySet="Players" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Player">
-    <Key>
-      <PropertyRef Name="PlayerId" />
-    </Key>
-    <Property Name="PlayerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="MMR" Type="Int32" />
-    <NavigationProperty Name="Matches" Relationship="GameModel.Player_Match" FromRole="Player" ToRole="Match" />
-    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <Association Name="Player_Match">
-    <End Type="GameModel.Match" Role="Match" Multiplicity="*" />
-    <End Type="GameModel.Player" Role="Player" Multiplicity="*" />
-  </Association>
 </Schema>

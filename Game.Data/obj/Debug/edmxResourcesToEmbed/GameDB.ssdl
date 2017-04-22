@@ -26,8 +26,6 @@
     <Property Name="MMR" Type="int" />
     <Property Name="Password" Type="nvarchar(max)" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'Game.dbo.Player_Match' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Player_Match">
     <Key>
       <PropertyRef Name="PlayerId" />
@@ -48,8 +46,10 @@ warning 6002: The table/view 'Game.dbo.Player_Match' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Player_Ma__Match__5070F446">
-    <End Role="Match" Type="Self.Match" Multiplicity="1" />
+  <Association Name="FK__Player_Ma__Match__5441852A">
+    <End Role="Match" Type="Self.Match" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Player_Match" Type="Self.Player_Match" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Match">
@@ -60,8 +60,10 @@ warning 6002: The table/view 'Game.dbo.Player_Match' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Player_Ma__Playe__4F7CD00D">
-    <End Role="Player" Type="Self.Player" Multiplicity="1" />
+  <Association Name="FK__Player_Ma__Playe__534D60F1">
+    <End Role="Player" Type="Self.Player" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Player_Match" Type="Self.Player_Match" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Player">
@@ -76,21 +78,16 @@ warning 6002: The table/view 'Game.dbo.Player_Match' does not have a primary key
     <EntitySet Name="Match" EntityType="Self.Match" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mission" EntityType="Self.Mission" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Player_Match" EntityType="Self.Player_Match" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Player_Match].[PlayerId] AS [PlayerId], 
-    [Player_Match].[MatchId] AS [MatchId]
-    FROM [dbo].[Player_Match] AS [Player_Match]</DefiningQuery>
-    </EntitySet>
+    <EntitySet Name="Player_Match" EntityType="Self.Player_Match" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Mission__MatchId__4D94879B" Association="Self.FK__Mission__MatchId__4D94879B">
       <End Role="Match" EntitySet="Match" />
       <End Role="Mission" EntitySet="Mission" />
     </AssociationSet>
-    <AssociationSet Name="FK__Player_Ma__Match__5070F446" Association="Self.FK__Player_Ma__Match__5070F446">
+    <AssociationSet Name="FK__Player_Ma__Match__5441852A" Association="Self.FK__Player_Ma__Match__5441852A">
       <End Role="Match" EntitySet="Match" />
       <End Role="Player_Match" EntitySet="Player_Match" />
     </AssociationSet>
-    <AssociationSet Name="FK__Player_Ma__Playe__4F7CD00D" Association="Self.FK__Player_Ma__Playe__4F7CD00D">
+    <AssociationSet Name="FK__Player_Ma__Playe__534D60F1" Association="Self.FK__Player_Ma__Playe__534D60F1">
       <End Role="Player" EntitySet="Player" />
       <End Role="Player_Match" EntitySet="Player_Match" />
     </AssociationSet>

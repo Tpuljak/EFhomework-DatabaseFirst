@@ -29,7 +29,7 @@ namespace Game.Domain.Repositories
             }
         }
 
-        public void AddNewPlayer(Player newPlayer, List<Match> newPlayerMatches)
+        public void AddNewPlayer(Player newPlayer)
         {        
             if (_context.Players.Count() != 0)
             {
@@ -37,11 +37,6 @@ namespace Game.Domain.Repositories
             }
             else
                 newPlayer.PlayerId = 1;
-
-            foreach (var match in newPlayerMatches)
-            {
-                _context.Matches.FirstOrDefault(x => x.MatchId == match.MatchId).Players.Add(newPlayer);
-            }
             
             _context.Players.Add(newPlayer);
             _context.SaveChanges();
